@@ -135,86 +135,69 @@ public class ResourceSubmitter implements Runnable {
                         }
                         if (logEntry.getAction() == (LogEntry.DELETE_RESOURCE)) {
                             indexingManager.deleteFromIndex(logEntry.getResourcePath(), tenantId);
-                            if (log.isDebugEnabled()) {
-                                log.debug("Resource Deleted: Resource at " + path +
-                                        " will be deleted from Indexing Server");
-                            }
+                            log.info(">>>>>>>> Resource Deleted: [TenantID: " + tenantId + "] Resource at " + path +
+                                    " will be deleted from Indexing Server @ " + System.currentTimeMillis());
                         } else if (IndexingUtils.isAuthorized(registry, path, ActionConstants.GET) && registry
                                         .resourceExists(path)) {
                             if (logEntry.getAction() == LogEntry.UPDATE) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Updated: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Updated: [TenantID: " + tenantId + "] " +
+                                        "Resource at " + path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.DELETE_COMMENT) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource comment deleted: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource comment deleted: [TenantID: " + tenantId + "] Resource at" +
+                                        " " + path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.REMOVE_ASSOCIATION) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource association removed: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource association removed:  [TenantID: " + tenantId +
+                                        "] Resource at " + path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.REMOVE_TAG) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource tag removed: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource tag removed: [TenantID: " + tenantId + "] Resource at " +
+                                        path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.ADD) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Inserted: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Inserted:  [TenantID: " + tenantId + "] Resource at " +
+                                        path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.TAG) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource tag added: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource tag added: [TenantID: " + tenantId + "] Resource at " +
+                                        path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.COMMENT) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource comment added: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource comment added: [TenantID: " + tenantId + "] Resource at " +
+                                        path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == LogEntry.ADD_ASSOCIATION) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource association added: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource association added: [TenantID: " + tenantId +
+                                        "] Resource at " + path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             } else if (logEntry.getAction() == (LogEntry.MOVE)) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
                                 indexingManager.deleteFromIndex(logEntry.getActionData(), tenantId);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Moved: Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Moved: [TenantID: " + tenantId + "] Resource at " + path +
+                                        " has been submitted to the Indexing Server @ " + System.currentTimeMillis());
                             } else if (logEntry.getAction() == (LogEntry.COPY)) {
                                 path = logEntry.getActionData();
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Copied : Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Copied : [TenantID: " + tenantId + "] Resource at " + path +
+                                        " has been submitted to the Indexing Server @ " + System.currentTimeMillis());
                             } else if (logEntry.getAction() == (LogEntry.RENAME)) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Renamed : Resource at " + path +
-                                            " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Renamed : [TenantID: " + tenantId + "] Resource at " + path +
+                                        " has been submitted to the Indexing Server @ " + System.currentTimeMillis());
                             } else if (logEntry.getAction() == (LogEntry.RESTORE)) {
                                 indexingManager.submitFileForIndexing(tenantId, tenantDomain, path, null);
-                                if (log.isDebugEnabled()) {
-                                    log.debug("Resource Res+tore : Resource at " + path +
-                                              " has been submitted to the Indexing Server");
-                                }
+                                log.info(">>>>>>>> Resource Res+tore : [TenantID: " + tenantId + "] Resource at " +
+                                        path + " has been submitted to the Indexing Server @ " +
+                                        System.currentTimeMillis());
                             }
                         }
                     } catch (Exception e) { // to ease debugging

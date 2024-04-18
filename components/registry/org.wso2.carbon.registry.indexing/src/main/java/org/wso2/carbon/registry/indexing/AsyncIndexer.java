@@ -30,6 +30,7 @@ import org.wso2.carbon.registry.indexing.solr.SolrClient;
 import org.wso2.carbon.utils.WaitBeforeShutdownObserver;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -208,7 +209,8 @@ public class AsyncIndexer implements Runnable {
                 PrivilegedCarbonContext.getThreadLocalCarbonContext().setTenantId(fileData.tenantId);
                 PrivilegedCarbonContext.getThreadLocalCarbonContext().setTenantDomain(fileData.tenantDomain);
                 createIndexDocument(fileData);
-
+                log.info(">>>>>>>> Indexing completed: [TenantID: " + fileData.tenantId + "] Resource path: " +
+                        fileData.path + " @ " + System.currentTimeMillis());
             } finally {
                 PrivilegedCarbonContext.endTenantFlow();
             }
